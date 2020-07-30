@@ -1,0 +1,91 @@
+// Inclusao das bibliotecas para o NFC
+usar SPI
+usar MFRC522
+
+// Portas e objeto para o NFC
+definir SS_PIN 10
+definir RST_PIN 9
+MFRC522 mfrc522(SS_PIN, RST_PIN);   // Create MFRC522 instance.
+
+// Portas do LED RGB
+numero Vermelho = 7;
+numero Verde = 6;
+numero Azul = 5;
+
+// Cartoes de virus (pode ser descoberto ao observar o monitor Serial e escanear o cartao
+Palavra Cartao1 = "1BD92F";
+Palavra Cartao2 = "7170691C";
+
+// Virus conhecidos
+numero Virus1 = 0;
+numero Virus2 = 0;
+ 
+configuracao(){
+  // Inicia a comunicacao serial com o computador
+  USB.conectar(9600);
+  // Inicia a comunicacao SPI
+  SPI.conectar();
+  // Inicia noss moduli MRFC522
+  mfrc522.PCD_Init();
+  // Define  as portas do RGB como saidas
+  definirModo(Vermelho, SAIDA);
+  definirModo(Verde, SAIDA);
+  definirModo(Azul, SAIDA);
+  // Escreve os valores iniciais no RGB, deixando apenas o verde ligado
+  ligar(Vermelho);
+  ligar(Azul);
+  desligar(Verde);
+}
+ 
+principal(){
+  // Procura por novos cartoes com o NFC e o seleciona em seguida, caso nao encontre nada recomeca o loop principal
+  se ( ! mfrc522.PICC_IsNewCardPresent())
+    responder;
+  se ( ! mfrc522.PICC_ReadCardSerial())
+    responder;
+  
+  // Cria uma variavel para guardar a UID do NFC
+  Palavra conteudo= "";
+
+  // Transforma a UID em hexadecimal para facilitar a leitura
+  para (byte i = 0; i < mfrc522.uid.size; i++)
+     conteudo.concat(String(mfrc522.uid.uidByte[i], HEX));
+
+  // Coloca todas as letras da UID em maiusculo e envia ela na tela
+  conteudo.toUpperCase();
+  USB.enviarln(conteudo);
+
+  // Verifica se esta sendo exposto ao virus1
+  se (conteudo == Cartao1){
+    // Caso esteja exposto, liga o LED azul e apaga o verde
+    ligar(Verde);
+    desligar(Azul);
+    esperar(2000);
+    // Verifica se já foi infectado por esse virus antes, se já tiver sido infectado apenas pula a parte de estar infeccioso
+    se(Virus1 == 0){
+      // Acende a luz vermelha
+      ligar(Azul);
+      desligar(Vermelho);
+      esperar(3000);
+      // Salva como ja exposto ao virus
+      Virus1 = 1;
+    }
+  }
+
+  // Repete o mesmo processo do virus1 para o 2
+  se (conteudo == Cartao2){
+    ligar(Verde);
+    desligar(Azul);
+    delay(1000);
+    se(Virus2 == 0){
+      ligar(Azul);
+      desligar(Vermelho);
+      esperar(2000);
+      Virus2 = 1;
+    }
+  }
+  // Garante que apenas o verde esteja ligado
+  ligar(Vermelho);
+  ligar(Azul);
+  desligar(Verde);
+}
