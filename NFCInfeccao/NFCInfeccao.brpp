@@ -1,11 +1,11 @@
 // Inclusao das bibliotecas para o NFC
 usar SPI
-usar MFRC522
+usar NFC
 
 // Portas e objeto para o NFC
-definir SS_PIN 10
-definir RST_PIN 9
-MFRC522 mfrc522(SS_PIN, RST_PIN);   // Create MFRC522 instance.
+definir PINO_SS 10
+definir PINO_RESET 9
+NFC  nfc(PINO_SS, PINO_RESET);   // Create MFRC522 instance.
 
 // Portas do LED RGB
 numero Vermelho = 7;
@@ -13,8 +13,8 @@ numero Verde = 6;
 numero Azul = 5;
 
 // Cartoes de virus (pode ser descoberto ao observar o monitor Serial e escanear o cartao
-Palavra Cartao1 = "1BD92F";
-Palavra Cartao2 = "7170691C";
+Palavra Cartao1 = "1B D9 02 0F";
+Palavra Cartao2 = "71 70 69 1C";
 
 // Virus conhecidos
 numero Virus1 = 0;
@@ -26,7 +26,7 @@ configuracao(){
   // Inicia a comunicacao SPI
   SPI.conectar();
   // Inicia noss moduli MRFC522
-  mfrc522.PCD_Init();
+  nfc.iniciar();
   // Define  as portas do RGB como saidas
   definirModo(Vermelho, SAIDA);
   definirModo(Verde, SAIDA);
@@ -39,21 +39,16 @@ configuracao(){
  
 principal(){
   // Procura por novos cartoes com o NFC e o seleciona em seguida, caso nao encontre nada recomeca o loop principal
-  se ( ! mfrc522.PICC_IsNewCardPresent())
+  se ( ! nfc.cartaoEstaPresente())
     responder;
-  se ( ! mfrc522.PICC_ReadCardSerial())
+  se ( ! nfc.lerCodigoCartao())
     responder;
   
   // Cria uma variavel para guardar a UID do NFC
   Palavra conteudo= "";
 
   // Transforma a UID em hexadecimal para facilitar a leitura
-  para (byte i = 0; i < mfrc522.uid.size; i++)
-     conteudo.concat(String(mfrc522.uid.uidByte[i], HEX));
-
-  // Coloca todas as letras da UID em maiusculo e envia ela na tela
-  conteudo.toUpperCase();
-  USB.enviarln(conteudo);
+  nfc.imprimirUID(nfc, &conteudo);
 
   // Verifica se esta sendo exposto ao virus1
   se (conteudo == Cartao1){
@@ -76,7 +71,7 @@ principal(){
   se (conteudo == Cartao2){
     ligar(Verde);
     desligar(Azul);
-    delay(1000);
+    esperar(1000);
     se(Virus2 == 0){
       ligar(Azul);
       desligar(Vermelho);
