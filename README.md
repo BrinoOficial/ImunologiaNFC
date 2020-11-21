@@ -28,7 +28,7 @@ O código está disponível na linguagem Br.ino e na Arduino dentro da pasta "NF
 
 # Projeto finalizado
 Seguem algumas imagem do resultado do projeto e um breve vídeo de seu funcionamento.
-![Vídeo funcionando](![Imagem do Projeto](https://github.com/BrinoOficial/ImunologiaNFC/blob/master/Fotos/IMG_5357.MOV))
+![Vídeo funcionando](https://github.com/BrinoOficial/ImunologiaNFC/blob/master/Fotos/IMG_5357.MOV)
 ![Imagem do Projeto](https://github.com/BrinoOficial/ImunologiaNFC/blob/master/Fotos/IMG_5352.jpg)
 ![Imagem do Projeto](https://github.com/BrinoOficial/ImunologiaNFC/blob/master/Fotos/IMG_5353.jpg)
 ![Imagem do Projeto](https://github.com/BrinoOficial/ImunologiaNFC/blob/master/Fotos/IMG_5354.jpg)
