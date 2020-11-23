@@ -48,7 +48,7 @@ principal(){
   Palavra conteudo= "";
 
   // Transforma a UID em hexadecimal para facilitar a leitura
-  nfc.imprimirUID(nfc, &conteudo);
+  nfc.imprimirUID(&nfc, &conteudo);
 
   // Verifica se esta sendo exposto ao virus1
   se (conteudo == Cartao1){
