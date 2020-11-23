@@ -1,7 +1,7 @@
 # ImunologiaNFC
 Projeto para explicar imunização primária e secundária de forma divertida. Com um módulo NFC MRFC522(que tem um desenho de um garoto colado), nós demonstramos os estágios de saúde do "Marcelo", um garoto que foi contaminado por diferentes vírus(cartões NFC). Um LED RGB ilustra o estado do paciente.
 
-#Como Aplicar
+# Como Aplicar
 Marcelo é um garoto que saiu para brincar com seus amigos. Por azar, ele entrou em contato com um vírus (cartão NFC do Vírus se aproxima do Marcelo). Como o Marcelo nunca havia sido contamidado por este patógeno, ele vive todo o processo de imunização primária. Sua saúde (LED brilhando em verde), mudará para o status de contaminado(LED brilha em azul), depois para doente (LED brilha em vermelho) e, por último, volt a ficar saudável (LED Brilha em verde).
 Agora, se ele entrar em contato novamente com o vírus, ele não passará pelo estágio de doente (o led brilhará em verde, depois azul, depois verde).
 
