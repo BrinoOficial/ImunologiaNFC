@@ -13,8 +13,8 @@ int  Verde = 6;
 int  Azul = 5;
 
 // Cartoes de virus (pode ser descoberto ao observar o monitor Serial e escanear o cartao
-String Cartao1 = " 1B D9 02 0F";
-String Cartao2 = " 71 70 69 1C";
+String Cartao1 = "1B D9 02 0F";
+String Cartao2 = "71 70 69 1C";
 
 // Virus conhecidos
 int  Virus1 = 0;
