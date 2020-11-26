@@ -8,9 +8,9 @@
 NFC  nfc(PINO_SS, PINO_RESET);   // Create MFRC522 instance.
 
 // Portas do LED RGB
-int  Vermelho = 7;
+int  Vermelho = 5;
 int  Verde = 6;
-int  Azul = 5;
+int  Azul = 7;
 
 // Cartoes de virus (pode ser descoberto ao observar o monitor Serial e escanear o cartao
 String Cartao1 = "1B D9 02 0F";
