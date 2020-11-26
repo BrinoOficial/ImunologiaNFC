@@ -8,9 +8,9 @@ definir PINO_RESET 9
 NFC  nfc(PINO_SS, PINO_RESET);   // Create MFRC522 instance.
 
 // Portas do LED RGB
-numero Vermelho = 7;
+numero Vermelho = 5;
 numero Verde = 6;
-numero Azul = 5;
+numero Azul = 7;
 
 // Cartoes de virus (pode ser descoberto ao observar o monitor Serial e escanear o cartao
 Palavra Cartao1 = "1B D9 02 0F";
