@@ -23,8 +23,10 @@ A montagem do circuito pode ser visto na imagam abaixo:
 
 # Código
 Antes de baixar o código, instale a biblioteca NFC em : https://github.com/BrinoOficial/NFC
-Obs: os passos para instalação está disponível no link acima.
+Obs: os passos para instalação estão disponível no link acima.
 O código está disponível na linguagem Br.ino e na Arduino dentro da pasta "NFCInfeccao".
+
+IMPORTANTE: ao executar este código pela primeira vez, carregue-o para a placa Arduino, abra o monitor serial da IDE e aproxime o cartão de leitura. Em seguida, substitua os valores das variáveis Cartao1 e Cartao2 para os valores que apareceram no Monitor Serial.
 
 # Projeto finalizado
 Seguem algumas imagem do resultado do projeto e um breve vídeo de seu funcionamento.
