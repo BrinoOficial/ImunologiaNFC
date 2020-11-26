@@ -13,8 +13,8 @@ numero Verde = 6;
 numero Azul = 7;
 
 // Cartoes de virus (pode ser descoberto ao observar o monitor Serial e escanear o cartao
-Palavra Cartao1 = "1B D9 02 0F";
-Palavra Cartao2 = "71 70 69 1C";
+Palavra Cartao1 = "1B D9 02 0F"; //SUBSTITUIR PELOS VALORES DO CARTAO NFC UTILIZADO
+Palavra Cartao2 = "71 70 69 1C"; //SUBSTITUIR PELOS VALORES DO OUTRO CARTAO NFC UTILIZADO
 
 // Virus conhecidos
 numero Virus1 = 0;
